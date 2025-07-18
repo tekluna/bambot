@@ -1,0 +1,43 @@
+const { Events, SlashCommandBuilder } = require('discord.js');
+const sqlite3 = require('sqlite3').verbose();
+const path = require('path');
+
+module.exports = {
+    data: new SlashCommandBuilder()
+        .setName('pingcount')
+        .setDescription('Replies with Pong and Latency info'),
+
+    async execute(interaction) {
+
+        try {
+            // const url="https://api.thecatapi.com/v1/images/search"
+            // const response = await fetch(url);
+            //
+            // const dbPath = path.join(__dirname, "database/bambot.db");
+            // const db = new sqlite3.Database(dbPath)
+
+            
+            if (response.ok) {
+                const data = await response.json();
+
+                const img_url = await data[0]['url'];
+                const img_id = await data [0]['id'];
+
+                const embed = new EmbedBuilder()
+                    .setTitle("💥 BAM! CAT UPON YA 🫴🐱")
+                    .setImage(img_url)
+                    .setFooter({ text: `Look sharp! (id: ${img_id})` })
+                    .setColor('#FF6B6B')
+                    .setTimestamp(); // Added timestamp for extra flair
+
+                await interaction.reply({ embeds: [embed] });
+            } else {
+                await interaction.reply("Sorry, I couldn't fetch a cat image right now. Try again later! 😿");
+            }
+        } catch(error) {
+            console.error('Error in cat command:', error);
+            await interaction.reply("Oops! Something went wrong while getting your cat image. 😿");
+        }
+    }
+}
+
