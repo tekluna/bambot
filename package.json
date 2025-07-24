@@ -16,5 +16,8 @@
     "discord",
     "bot",
     "example"
-  ]
+  ],
+  "devDependencies": {
+    "prettier": "3.6.2"
+  }
 }
