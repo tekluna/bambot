@@ -17,7 +17,7 @@ const path = require("path");
 // Environment variables
 const BOT_TOKEN = process.env.BOT_TOKEN;
 const CLIENT_ID = process.env.CLIENT_ID;
-const BOT_PREFIX = process.env.BOT_PREFIX || "bam";
+const BOT_PREFIX = process.env.BOT_PREFIX || "bbam";
 
 // Create Discord client
 const client = new Client({
